@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,10 +28,17 @@ public class LoginServlet extends HttpServlet {
 		String s1 = request.getParameter("eml");
 		String s2 = request.getParameter("psw");
 		
+		ServletContext context=getServletContext();
+
+		String s3=context.getInitParameter("driverName");
+		String s4=context.getInitParameter("connString");
+		String s5=context.getInitParameter("userName");
+		String s6=context.getInitParameter("userPass");
+
+		
 		try 
 		{
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
+			Connection conn=(Connection)context.getAttribute("connObj");
 			
 			PreparedStatement ps=conn.prepareStatement("select * from usertable where email=? and password=?");
 			ps.setString(1, s1);
