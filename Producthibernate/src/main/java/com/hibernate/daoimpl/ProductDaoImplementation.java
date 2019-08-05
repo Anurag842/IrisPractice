@@ -2,8 +2,7 @@ package com.hibernate.daoimpl;
 
 import java.util.List;
 
-
-
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -88,7 +87,17 @@ public class ProductDaoImplementation implements ProductDao {
 	}
 
 	public List<Product> getAllProducts() {
-		// TODO Auto-generated method stub
+		try {
+			Session session=SessionFactoryProvider.getSF().openSession();
+			Query q=session.createQuery("from Product");
+			List<Product> prod_list=q.list();
+			return prod_list;
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 		return null;
 	}
 
