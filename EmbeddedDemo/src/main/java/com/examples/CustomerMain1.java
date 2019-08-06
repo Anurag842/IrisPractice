@@ -1,5 +1,8 @@
 package com.examples;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.hibernate.daoimpl.CustomerDaoImplementation;
 import com.hibernate.daos.CustomerDao;
 import com.hibernate.entities.Address;
@@ -11,12 +14,18 @@ public class CustomerMain1 {
 		
 		
 		
-		Address addr1=new Address(12,"Wajidpur","Noida");
-		Address addr2=new Address(52,"Bansdroni","Kolkata");
 		
-		Customer c= new Customer("anurag@gmail","Anurag Dutta",addr1,addr2);
 		
 		CustomerDao daoObj= new CustomerDaoImplementation();
+		
+		Address addr1=new Address(11,"desert","Tatooine");
+		Address addr2=new Address(322,"Toplane","Radiant");
+		
+		Set<Address> addressSet=new HashSet<Address>();
+		addressSet.add(addr1);
+		addressSet.add(addr2);
+		
+		Customer c= new Customer("anurag@gmail","Anurag",addressSet);
 		
 		boolean a=daoObj.addCustomer(c);
 		
