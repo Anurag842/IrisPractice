@@ -58,6 +58,11 @@ public class Customer {
 	public void setAd(Set<Address> ad) {
 		this.ad = ad;
 	}
+
+	@Override
+	public String toString() {
+		return "Customer [emailId=" + emailId + ", name=" + name + ", ad=" + ad + "]";
+	}
 	
 
 	

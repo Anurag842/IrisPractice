@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+        <bean id="emp1" class="com.ex1.Employee" scope="prototype">
+        	<property name="name" value="Bubbles"></property>
+        	<property name="empId" value="1"></property>
+        </bean>
+        
+         <bean id="emp2" class="com.ex1.Employee" >
+        	<property name="name" value="Blossom"></property>
+        	<property name="empId" value="2"></property>
+        </bean>
+        
+         <bean id="emp3" class="com.ex1.Employee" >
+        	<property name="name" value="Buttercup"></property>
+        	<property name="empId" value="3"></property>
+        </bean>
+        
+        <bean id="dept" class="com.ex1.Department">
+        	<constructor-arg value="PPG"></constructor-arg>
+        	<constructor-arg value="Power Puff Girls"></constructor-arg>
+        	<constructor-arg >
+        		<set>
+        		<ref bean="emp1"></ref>
+        		<ref bean="emp2"></ref>
+        		<ref bean="emp3"></ref>
+        		</set>
+        	</constructor-arg>
+        </bean>
+        
+        
+        </beans>
