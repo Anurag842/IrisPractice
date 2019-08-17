@@ -38,7 +38,7 @@ public class ConfigFile {
 	{
 		Properties p=new Properties();
 		p.setProperty("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
-		p.setProperty("hibernate.hbm2ddl.auto", "value");
+		p.setProperty("hibernate.hbm2ddl.auto", "update");
 		p.setProperty("hibernate.show_sql", "true");
 		
 		LocalSessionFactoryBuilder sb = new LocalSessionFactoryBuilder(getDataSource());
